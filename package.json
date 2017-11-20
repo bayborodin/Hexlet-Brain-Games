@@ -1,0 +1,23 @@
+{
+  "name": "brain-games",
+  "version": "1.0.0",
+  "description": "Hexlet Brain Games Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bayborodin/project-lvl1-s168.git"
+  },
+  "keywords": [
+    "hexlet",
+    "braingames"
+  ],
+  "author": "Nicholas Bayborodin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bayborodin/project-lvl1-s168/issues"
+  },
+  "homepage": "https://github.com/bayborodin/project-lvl1-s168#readme"
+}
