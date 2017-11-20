@@ -1,8 +1,8 @@
 {
   "name": "nb-brain-games",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Hexlet Brain Games Project",
-  "main": "brain-games.js",
+  "main": "dist/bin/brain-games.js",
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
   },
@@ -30,8 +30,5 @@
     "babel-core": "*",
     "babel-preset-env": "*",
     "babel-preset-stage-0": "*"
-  },
-  "dependencies": {
-    "user": "0.0.0"
   }
 }
