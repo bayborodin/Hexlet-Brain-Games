@@ -1,10 +1,15 @@
 {
-  "name": "brain-games",
-  "version": "1.0.0",
+  "name": "nb-brain-games",
+  "version": "1.0.1",
   "description": "Hexlet Brain Games Project",
   "main": "index.js",
+  "bin": {
+    "brain-games": "dist/bin/brain-games.js"
+  },
   "scripts": {
-    "babel-node": "babel-node"
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,5 +30,8 @@
     "babel-core": "*",
     "babel-preset-env": "*",
     "babel-preset-stage-0": "*"
+  },
+  "dependencies": {
+    "user": "0.0.0"
   }
 }
