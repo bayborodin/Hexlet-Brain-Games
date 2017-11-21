@@ -1,8 +1,8 @@
 import readlineSync from 'readline-sync';
 
 const askName = () => {
-  const actual = readlineSync.question('May I have your name? ');
-  return actual;
+  const name = readlineSync.question('May I have your name? ');
+  return name;
 };
 
 export default askName;
