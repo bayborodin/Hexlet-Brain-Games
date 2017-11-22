@@ -56,3 +56,11 @@ export const runGameCycle = (userName, questionFunc) => {
   }
   endGameWin(userName);
 };
+
+// Find the greatest common divisor
+export const findGcd = (a, b) => {
+  if (b === 0) {
+    return Math.abs(a);
+  }
+  return findGcd(b, a % b);
+};
