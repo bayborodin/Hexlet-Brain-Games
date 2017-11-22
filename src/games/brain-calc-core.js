@@ -20,7 +20,7 @@ const calc = (operand1, operand2, operator) => {
     default:
       return NaN;
   }
-}
+};
 
 const askQuestion = () => {
   const a = common.getRand();
