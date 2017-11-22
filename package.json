@@ -1,11 +1,12 @@
 {
   "name": "nb-brain-games",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Hexlet Brain Games Project",
   "main": "dist/bin/brain-games.js",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
-    "brain-even": "dist/bin/brain-even.js"
+    "brain-even": "dist/bin/brain-even.js",
+    "brain-calc": "dist/bin/brain-calc.js"
   },
   "scripts": {
     "babel-node": "babel-node",

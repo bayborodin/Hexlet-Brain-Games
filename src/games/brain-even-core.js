@@ -1,11 +1,10 @@
 import readlineSync from 'readline-sync';
+import * as common from '..';
 
 const askName = () => {
-  const actual = readlineSync.question('May I have your name? ');
-  return actual;
+  const name = readlineSync.question('May I have your name? ');
+  return name;
 };
-
-const getRandomNumber = (min, max) => (Math.floor(Math.random() * (max - min))) + min;
 
 const isEven = num => (num % 2 === 0 ? 'yes' : 'no');
 
@@ -20,23 +19,21 @@ const checkAnswer = (question, answer) => {
 };
 
 const askQuestion = () => {
-  const minValue = 1; // minimum guess value
-  const maxValue = 99; // maximum guess value
-  const question = getRandomNumber(minValue, maxValue);
+  const question = common.getRand();
 
   console.log(`Question: ${question}`);
-  const answer = readlineSync.question('Your answer: ');
+  const answer = common.getAnswer();
   return checkAnswer(question, answer);
 };
 
 const askQuestions = (userName) => {
   for (let i = 0; i < 3; i += 1) {
     if (!askQuestion()) {
-      console.log(`Let's try again, ${userName}`);
+      common.endGameLoss(userName);
       return;
     }
   }
-  console.log(`Congratulations, ${userName}!`);
+  common.endGameWin(userName);
 };
 
 const starGame = () => {

@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import askName from '../app/greeting';
-
+import askName from '../games/greeting';
 
 console.log('Welcome to the Brain Games!');
 const name = askName();
