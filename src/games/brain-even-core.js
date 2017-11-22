@@ -1,48 +1,28 @@
-import readlineSync from 'readline-sync';
-import * as common from '..';
-
-const askName = () => {
-  const name = readlineSync.question('May I have your name? ');
-  return name;
-};
+import { getAnswer, getRand, checkAnswer, endGameLoss, endGameWin, showGameTitle, askUserName } from '..';
 
 const isEven = num => (num % 2 === 0 ? 'yes' : 'no');
 
-const checkAnswer = (question, answer) => {
-  const correctAnswer = isEven(question);
-  if (correctAnswer === answer) {
-    console.log('Correct!');
-    return true;
-  }
-  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
-  return false;
-};
-
 const askQuestion = () => {
-  const question = common.getRand();
-
+  const question = getRand();
   console.log(`Question: ${question}`);
-  const answer = common.getAnswer();
-  return checkAnswer(question, answer);
+  const answer = getAnswer();
+  const correctAnswer = isEven(question);
+  return checkAnswer(answer, correctAnswer);
 };
 
 const askQuestions = (userName) => {
   for (let i = 0; i < 3; i += 1) {
     if (!askQuestion()) {
-      common.endGameLoss(userName);
+      endGameLoss(userName);
       return;
     }
   }
-  common.endGameWin(userName);
+  endGameWin(userName);
 };
 
 const starGame = () => {
-  console.log();
-  console.log('Welcome to the Brain Games!');
-  console.log('Answer "yes" if number even otherwise answer "no".');
-  console.log();
-  const userName = askName();
-  console.log(`Hello, ${userName}!`);
+  showGameTitle('Answer "yes" if number even otherwise answer "no".');
+  const userName = askUserName();
   askQuestions(userName);
 };
 

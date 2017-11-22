@@ -1,8 +1,8 @@
-import * as common from '..';
+import { getAnswer, getRand, checkAnswer, endGameLoss, endGameWin, showGameTitle, askUserName } from '..';
 
 const getOperator = () => {
   const operators = ['+', '-', '*', '/'];
-  const idx = common.getRand(0, 3);
+  const idx = getRand(0, 3);
 
   return operators[idx];
 };
@@ -23,13 +23,13 @@ const calc = (operand1, operand2, operator) => {
 };
 
 const askQuestion = () => {
-  const a = common.getRand();
-  const b = common.getRand();
+  const a = getRand();
+  const b = getRand();
   const op = getOperator();
   console.log(`Question: ${a} ${op} ${b}`);
-  const answer = common.getAnswer();
+  const answer = getAnswer();
   const rightAnswer = calc(a, b, op);
-  const isCorrect = common.checkAnswer(answer, rightAnswer.toString());
+  const isCorrect = checkAnswer(answer, rightAnswer.toString());
 
   return isCorrect;
 };
@@ -37,16 +37,16 @@ const askQuestion = () => {
 const askQuestions = (userName) => {
   for (let i = 0; i < 3; i += 1) {
     if (!askQuestion()) {
-      common.endGameLoss(userName);
+      endGameLoss(userName);
       return;
     }
   }
-  common.endGameWin(userName);
+  endGameWin(userName);
 };
 
 const startGame = () => {
-  common.showGameTitle('What is the result of the expression?');
-  const userName = common.askUserName();
+  showGameTitle('What is the result of the expression?');
+  const userName = askUserName();
   askQuestions(userName);
 };
 
