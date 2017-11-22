@@ -1,4 +1,4 @@
-import { getAnswer, getRand, checkAnswer, showGameTitle, askUserName, runGameCicle } from '..';
+import { getAnswer, getRand, checkAnswer, showGameTitle, askUserName, runGameCycle } from '..';
 
 // Get a random operator
 const getOperator = () => {
@@ -41,7 +41,7 @@ const askQuestion = () => {
 const startGame = () => {
   showGameTitle('What is the result of the expression?');
   const userName = askUserName();
-  runGameCicle(userName, askQuestion);
+  runGameCycle(userName, askQuestion);
 };
 
 export default startGame;

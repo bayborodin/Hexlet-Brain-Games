@@ -46,8 +46,8 @@ export const checkAnswer = (userAnswer, correctAnswer) => {
   return false;
 };
 
-// Run the main game cicle
-export const runGameCicle = (userName, questionFunc) => {
+// Run the main game cycle
+export const runGameCycle = (userName, questionFunc) => {
   for (let i = 0; i < 3; i += 1) {
     if (!questionFunc()) {
       endGameLoss(userName);

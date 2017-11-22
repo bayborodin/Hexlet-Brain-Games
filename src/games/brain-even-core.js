@@ -1,4 +1,4 @@
-import { getAnswer, getRand, checkAnswer, showGameTitle, askUserName, runGameCicle } from '..';
+import { getAnswer, getRand, checkAnswer, showGameTitle, askUserName, runGameCycle } from '..';
 
 const isEven = num => (num % 2 === 0 ? 'yes' : 'no');
 
@@ -15,7 +15,7 @@ const askQuestion = () => {
 const starGame = () => {
   showGameTitle('Answer "yes" if number even otherwise answer "no".');
   const userName = askUserName();
-  runGameCicle(userName, askQuestion);
+  runGameCycle(userName, askQuestion);
 };
 
 export default starGame;
