@@ -1,7 +1,8 @@
-import { getAnswer, getRand, checkAnswer, endGameLoss, endGameWin, showGameTitle, askUserName } from '..';
+import { getAnswer, getRand, checkAnswer, showGameTitle, askUserName, runGameCicle } from '..';
 
 const isEven = num => (num % 2 === 0 ? 'yes' : 'no');
 
+// Main game logic
 const askQuestion = () => {
   const question = getRand();
   console.log(`Question: ${question}`);
@@ -10,20 +11,11 @@ const askQuestion = () => {
   return checkAnswer(answer, correctAnswer);
 };
 
-const askQuestions = (userName) => {
-  for (let i = 0; i < 3; i += 1) {
-    if (!askQuestion()) {
-      endGameLoss(userName);
-      return;
-    }
-  }
-  endGameWin(userName);
-};
-
+// Game entry point
 const starGame = () => {
   showGameTitle('Answer "yes" if number even otherwise answer "no".');
   const userName = askUserName();
-  askQuestions(userName);
+  runGameCicle(userName, askQuestion);
 };
 
 export default starGame;

@@ -1,5 +1,6 @@
-import { getAnswer, getRand, checkAnswer, endGameLoss, endGameWin, showGameTitle, askUserName } from '..';
+import { getAnswer, getRand, checkAnswer, showGameTitle, askUserName, runGameCicle } from '..';
 
+// Get a random operator
 const getOperator = () => {
   const operators = ['+', '-', '*', '/'];
   const idx = getRand(0, 3);
@@ -7,6 +8,7 @@ const getOperator = () => {
   return operators[idx];
 };
 
+// Make calculations
 const calc = (operand1, operand2, operator) => {
   switch (operator) {
     case '+':
@@ -22,6 +24,7 @@ const calc = (operand1, operand2, operator) => {
   }
 };
 
+// Game logic
 const askQuestion = () => {
   const a = getRand();
   const b = getRand();
@@ -34,20 +37,11 @@ const askQuestion = () => {
   return isCorrect;
 };
 
-const askQuestions = (userName) => {
-  for (let i = 0; i < 3; i += 1) {
-    if (!askQuestion()) {
-      endGameLoss(userName);
-      return;
-    }
-  }
-  endGameWin(userName);
-};
-
+// Game entry point
 const startGame = () => {
   showGameTitle('What is the result of the expression?');
   const userName = askUserName();
-  askQuestions(userName);
+  runGameCicle(userName, askQuestion);
 };
 
 export default startGame;
