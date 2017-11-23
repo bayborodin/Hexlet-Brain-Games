@@ -46,22 +46,29 @@ const checkAnswer = (userAnswer, correctAnswer) => {
   return false;
 };
 
+const buildString = (params, delimeter) => {
+  let str = '';
+  for (let i = 0; i < params.length; i += 1) {
+    if (str === '') {
+      str = params[i];
+    } else {
+      str = `${str}${delimeter}${params[i]}`;
+    }
+  }
+
+  return str;
+};
+
 const askQuestion = (func, paramsCnt, delimeter) => {
   const params = [];
   for (let i = 0; i < paramsCnt; i += 1) {
     params[i] = getRand();
   }
+
   if (paramsCnt === 1) {
     console.log(`Question: ${params[0]}`);
   } else {
-    let str = '';
-    for (let i = 0; i < paramsCnt; i += 1) {
-      if (str === '') {
-        str = params[i];
-      } else {
-        str = `${str}${delimeter}${params[i]}`;
-      }
-    }
+    const str = buildString(params, delimeter);
     console.log(`Question: ${str}`);
   }
 
