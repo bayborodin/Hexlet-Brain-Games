@@ -10,18 +10,26 @@ const getOperator = () => {
 
 // Make calculations
 const getFunc = (operator) => {
+  let result = '';
+
   switch (operator) {
     case '+':
-      return args => args[0] + args[1];
+      result = args => args[0] + args[1];
+      break;
     case '-':
-      return args => args[0] - args[1];
+      result = args => args[0] - args[1];
+      break;
     case '*':
-      return args => args[0] * args[1];
+      result = args => args[0] * args[1];
+      break;
     case '/':
-      return args => args[0] / args[1];
+      result = args => args[0] / args[1];
+      break;
     default:
-      return 'Unknown operator';
+      result = 'Unknown operator';
   }
+
+  return result;
 };
 
 const operator = getOperator();
