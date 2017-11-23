@@ -33,7 +33,7 @@ const getAnswer = () => {
 };
 
 // Get a random number from the given range
-export const getRand = (min = 1, max = 9) => (Math.floor(Math.random() * (max - min))) + min;
+export const getRand = (min = 100, max = 10000) => (Math.floor(Math.random() * (max - min))) + min;
 
 // Check a user's answer
 const checkAnswer = (userAnswer, correctAnswer) => {
