@@ -1,22 +1,19 @@
-import { getAnswer, getRand, checkAnswer, showGameTitle, askUserName, runGameCycle, findGcd } from '..';
+import { loadGame } from '../game-engine';
 
-// Game logic
-const askQuestion = () => {
-  const a = getRand(0, 20);
-  const b = getRand(0, 20);
-  console.log(`Question: ${a} ${b}`);
-  const answer = getAnswer();
-  const rightAnswer = findGcd(a, b);
-  const isCorrect = checkAnswer(answer, rightAnswer.toString());
-
-  return isCorrect;
+// Find the greatest common divisor
+const findGcd = (args) => {
+  if (args[1] === 0) {
+    return Math.abs(args[0]);
+  }
+  const newArgs = [];
+  newArgs.push(args[1]);
+  newArgs.push(args[0] % args[1]);
+  return findGcd(newArgs);
 };
 
-// Game entry point
-const startGame = () => {
-  showGameTitle('Find the greatest common divisor of given numbers.');
-  const userName = askUserName();
-  runGameCycle(userName, askQuestion);
-};
+const paramsCnt = 2;
+const levels = 3;
 
-export default startGame;
+const start = () => loadGame('Find the greatest common divisor of given numbers.', findGcd, levels, paramsCnt);
+
+export default start;

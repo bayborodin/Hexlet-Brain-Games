@@ -1,4 +1,4 @@
-import { getAnswer, getRand, checkAnswer, showGameTitle, askUserName, runGameCycle } from '..';
+import { loadGame, getRand } from '../game-engine';
 
 // Get a random operator
 const getOperator = () => {
@@ -9,39 +9,27 @@ const getOperator = () => {
 };
 
 // Make calculations
-const calc = (operand1, operand2, operator) => {
+const getFunc = (operator) => {
   switch (operator) {
     case '+':
-      return operand1 + operand2;
+      return args => args[0] + args[1];
     case '-':
-      return operand1 - operand2;
+      return args => args[0] - args[1];
     case '*':
-      return operand1 * operand2;
+      return args => args[0] * args[1];
     case '/':
-      return operand1 / operand2;
+      return args => args[0] / args[1];
     default:
-      return NaN;
+      return 'Unknown operator';
   }
 };
 
-// Game logic
-const askQuestion = () => {
-  const a = getRand();
-  const b = getRand();
-  const op = getOperator();
-  console.log(`Question: ${a} ${op} ${b}`);
-  const answer = getAnswer();
-  const rightAnswer = calc(a, b, op);
-  const isCorrect = checkAnswer(answer, rightAnswer.toString());
+const operator = getOperator();
+const delimeter = ` ${operator} `; 
+const func = getFunc(operator);
+const paramsCnt = 2;
+const levels = 3;
 
-  return isCorrect;
-};
+const start = () => loadGame('What is the result of the expression?', func, levels, paramsCnt, delimeter);
 
-// Game entry point
-const startGame = () => {
-  showGameTitle('What is the result of the expression?');
-  const userName = askUserName();
-  runGameCycle(userName, askQuestion);
-};
-
-export default startGame;
+export default start;

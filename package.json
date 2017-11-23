@@ -1,8 +1,8 @@
 {
   "name": "nb-brain-games",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Hexlet Brain Games Project",
-  "main": "dist/bin/brain-games.js",
+  "main": "dist/game-engine.js",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
     "brain-even": "dist/bin/brain-even.js",
@@ -41,6 +41,7 @@
     "eslint-plugin-import": "^2.8.0"
   },
   "dependencies": {
+    "hexlet-pairs": "^1.0.5",
     "readline-sync": "*"
   }
 }
