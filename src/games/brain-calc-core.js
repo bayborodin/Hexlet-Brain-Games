@@ -1,43 +1,48 @@
+import { cons } from 'hexlet-pairs';
 import { loadGame, getRand } from '../game-engine';
 
-// Get a random operator
-const getOperator = () => {
-  const operators = ['+', '-', '*', '/'];
-  const idx = getRand(0, 3);
+const rules = 'What is the result of the expression?';
 
-  return operators[idx];
+const qaGen = () => {
+  const getOperator = () => {
+    const operators = ['+', '-', '*', '/'];
+    const idx = getRand(0, 3);
+    return operators[idx];
+  };
+
+  const calc = (a, b, op) => {
+    let result = 0;
+
+    switch (op) {
+      case '+':
+        result = a + b;
+        break;
+      case '-':
+        result = a - b;
+        break;
+      case '*':
+        result = a * b;
+        break;
+      case '/':
+        result = a / b;
+        break;
+      default:
+        result = 0;
+    }
+
+    return result;
+  };
+
+  const a = getRand(1, 9);
+  const b = getRand(1, 9);
+  const op = getOperator();
+
+  const question = `${a} ${op} ${b}`;
+  const answer = calc(a, b, q).toString;
+
+  const pair = cons(question, answer);
+
+  return pair;
 };
 
-// Make calculations
-const getFunc = (operator) => {
-  let result = '';
-
-  switch (operator) {
-    case '+':
-      result = args => args[0] + args[1];
-      break;
-    case '-':
-      result = args => args[0] - args[1];
-      break;
-    case '*':
-      result = args => args[0] * args[1];
-      break;
-    case '/':
-      result = args => args[0] / args[1];
-      break;
-    default:
-      result = 'Unknown operator';
-  }
-
-  return result;
-};
-
-const operator = getOperator();
-const delimeter = ` ${operator} `;
-const func = getFunc(operator);
-const paramsCnt = 2;
-const levels = 3;
-
-const start = () => loadGame('What is the result of the expression?', func, levels, paramsCnt, delimeter);
-
-export default start;
+loadGame(rules, qaGen);
