@@ -25,7 +25,7 @@ const getFunc = (operator) => {
 };
 
 const operator = getOperator();
-const delimeter = ` ${operator} `; 
+const delimeter = ` ${operator} `;
 const func = getFunc(operator);
 const paramsCnt = 2;
 const levels = 3;

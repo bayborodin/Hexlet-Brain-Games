@@ -47,7 +47,7 @@ const checkAnswer = (userAnswer, correctAnswer) => {
 };
 
 const askQuestion = (func, paramsCnt, delimeter) => {
-  let params = [];
+  const params = [];
   for (let i = 0; i < paramsCnt; i += 1) {
     params[i] = getRand();
   }
