@@ -1,19 +1,25 @@
-import { loadGame } from '../game-engine';
+import { cons } from 'hexlet-pairs';
+import { loadGame, getRand } from '../game-engine';
 
-// Find the greatest common divisor
-const findGcd = (args) => {
-  if (args[1] === 0) {
-    return Math.abs(args[0]);
-  }
-  const newArgs = [];
-  newArgs.push(args[1]);
-  newArgs.push(args[0] % args[1]);
-  return findGcd(newArgs);
+const rules = 'Find the greatest common divisor of given numbers.';
+
+const qaGen = () => {
+  const findGcd = (a, b) => {
+    if (b === 0) {
+      return Math.abs(a);
+    }
+    const c = a % b;
+    return findGcd(b, c);
+  };
+
+  const a = getRand(1, 20);
+  const b = getRand(1, 20);
+  const question = `${a} ${b}`;
+  const answer = findGcd(a, b).toString();
+  const pair = cons(question, answer);
+
+  return pair;
 };
 
-const paramsCnt = 2;
-const levels = 3;
-
-const start = () => loadGame('Find the greatest common divisor of given numbers.', findGcd, levels, paramsCnt);
-
+const start = () => loadGame(rules, qaGen);
 export default start;

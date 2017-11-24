@@ -38,11 +38,13 @@ const qaGen = () => {
   const op = getOperator();
 
   const question = `${a} ${op} ${b}`;
-  const answer = calc(a, b, q).toString;
+  const answer = (calc(a, b, op)).toString();
 
   const pair = cons(question, answer);
 
   return pair;
 };
 
-loadGame(rules, qaGen);
+const start = () => loadGame(rules, qaGen);
+
+export default start;

@@ -1,4 +1,5 @@
 import readlineSync from 'readline-sync';
+import { car, cdr } from 'hexlet-pairs';
 
 // Show a game's banner
 const showGameTitle = (title) => {
@@ -35,63 +36,27 @@ const getAnswer = () => {
 // Get a random number from the given range
 export const getRand = (min = 100, max = 10000) => (Math.floor(Math.random() * (max - min))) + min;
 
-// Check a user's answer
-const checkAnswer = (userAnswer, correctAnswer) => {
-  if (userAnswer === correctAnswer) {
-    console.log('Correct!');
-    return true;
-  }
-
-  console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
-  return false;
-};
-
-const buildString = (params, delimeter) => {
-  let str = '';
-  for (let i = 0; i < params.length; i += 1) {
-    if (str === '') {
-      str = params[i];
-    } else {
-      str = `${str}${delimeter}${params[i]}`;
-    }
-  }
-
-  return str;
-};
-
-const askQuestion = (func, paramsCnt, delimeter) => {
-  const params = [];
-  for (let i = 0; i < paramsCnt; i += 1) {
-    params[i] = getRand();
-  }
-
-  if (paramsCnt === 1) {
-    console.log(`Question: ${params[0]}`);
-  } else {
-    const str = buildString(params, delimeter);
-    console.log(`Question: ${str}`);
-  }
-
-  const answer = getAnswer();
-  const rightAnswer = func(params);
-  const isCorrect = checkAnswer(answer, rightAnswer.toString());
-
-  return isCorrect;
-};
 
 // Run the main game cycle
-const runGameCycle = (levels, userName, func, paramsCnt, delimeter) => {
-  for (let i = 0; i < levels; i += 1) {
-    if (!askQuestion(func, paramsCnt, delimeter)) {
+const runGameCycle = (qagen, userName) => {
+  for (let i = 0; i < 3; i += 1) {
+    const qa = qagen();
+    const question = car(qa);
+    const correctAnswer = cdr(qa);
+    console.log(`Question: ${question}`);
+    const answer = getAnswer();
+    if (answer !== correctAnswer) {
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       endGameLoss(userName);
       return;
-    }
+    } 
+    console.log('Correct!');
   }
   endGameWin(userName);
 };
 
-export const loadGame = (title, func, levels, paramsCnt = 2, delimeter = ' ') => {
-  showGameTitle(title);
+export const loadGame = (rules, qagen) => {
+  showGameTitle(rules);
   const userName = askUserName();
-  runGameCycle(levels, userName, func, paramsCnt, delimeter);
+  runGameCycle(qagen, userName);
 };
