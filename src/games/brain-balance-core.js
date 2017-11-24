@@ -13,23 +13,23 @@ const qaGen = () => {
       newArr = arr;
       const len = newArr.length;
       newArr.sort();
-  
+
       if (newArr[len - 1] - newArr[0] > 1) {
         const delta = Math.floor((newArr[len - 1] - newArr[0]) / 2);
         newArr[0] += delta;
         newArr[len - 1] -= delta;
         balanceArray(newArr);
       }
-  
+
       return newArr;
     };
-  
+
     for (let i = 0; i < str.length; i += 1) {
       digits[i] = parseInt(str[i], 10);
     }
-  
+
     const balancedArray = balanceArray(digits);
-  
+
     return balancedArray.join('');
   };
 

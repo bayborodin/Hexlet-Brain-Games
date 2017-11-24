@@ -49,7 +49,7 @@ const runGameCycle = (qagen, userName) => {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       endGameLoss(userName);
       return;
-    } 
+    }
     console.log('Correct!');
   }
   endGameWin(userName);
