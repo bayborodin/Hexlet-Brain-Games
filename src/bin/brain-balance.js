@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import start from '../games/brain-balance-core';
+import start from '../games/balance';
 
 start();

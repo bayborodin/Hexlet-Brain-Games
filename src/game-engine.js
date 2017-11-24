@@ -33,10 +33,6 @@ const getAnswer = () => {
   return answer;
 };
 
-// Get a random number from the given range
-export const getRand = (min = 100, max = 10000) => (Math.floor(Math.random() * (max - min))) + min;
-
-
 // Run the main game cycle
 const runGameCycle = (qagen, userName) => {
   for (let i = 0; i < 3; i += 1) {
@@ -55,8 +51,10 @@ const runGameCycle = (qagen, userName) => {
   endGameWin(userName);
 };
 
-export const loadGame = (rules, qagen) => {
+const loadGame = (rules, qagen) => {
   showGameTitle(rules);
   const userName = askUserName();
   runGameCycle(qagen, userName);
 };
+
+export default loadGame;

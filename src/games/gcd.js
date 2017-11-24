@@ -1,5 +1,6 @@
 import { cons } from 'hexlet-pairs';
-import { loadGame, getRand } from '../game-engine';
+import { loadGame } from '../game-engine';
+import { getRand } from '../utils';
 
 const rules = 'Find the greatest common divisor of given numbers.';
 
