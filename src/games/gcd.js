@@ -1,18 +1,10 @@
 import { cons } from 'hexlet-pairs';
 import { loadGame } from '../game-engine';
-import { getRand } from '../utils';
+import { getRand, findGcd } from '../utils';
 
 const rules = 'Find the greatest common divisor of given numbers.';
 
 const qaGen = () => {
-  const findGcd = (a, b) => {
-    if (b === 0) {
-      return Math.abs(a);
-    }
-    const c = a % b;
-    return findGcd(b, c);
-  };
-
   const a = getRand(1, 20);
   const b = getRand(1, 20);
   const question = `${a} ${b}`;
