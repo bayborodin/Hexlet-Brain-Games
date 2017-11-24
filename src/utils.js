@@ -8,6 +8,20 @@ export const findGcd = (a, b) => {
 
 export const getRand = (min = 100, max = 10000) => (Math.floor(Math.random() * (max - min))) + min;
 
+export const isPrime = (num, i = 2) => {
+  if (num < 2) {
+    return false;
+  } else if (num === 2) {
+    return true;
+  } else if (num % i === 0) {
+    return false;
+  } else if (i < (num / 2)) {
+    return isPrime(num, i + 1);
+  }
+
+  return true;
+};
+
 export const getProgression = (begin, step, length) => {
   const sequence = [];
 
