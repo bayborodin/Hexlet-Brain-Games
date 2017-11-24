@@ -2,7 +2,7 @@ import { cons } from 'hexlet-pairs';
 import loadGame from '../game-engine';
 import { getRand, isPrime } from '../utils';
 
-const rules = '';
+const rules = 'Answer "yes" if number prime otherwise answer "no".';
 
 const qaGen = () => {
   const num = getRand(0, 20);
