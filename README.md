@@ -6,3 +6,6 @@ Six terminal-based CLI games built with Node.js.
 
 ## Install
 ```npm install -g brain-games-blazecolour```
+
+## License
+MIT
