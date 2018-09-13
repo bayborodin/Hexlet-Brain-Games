@@ -18,4 +18,4 @@ Six terminal-based CLI games built with Node.js.
 | ```brain-prime```   | Number is prime or not? |
 
 ## License
-**[MIT](./LICENSE.md)**
+**[MIT](./LICENSE)**
